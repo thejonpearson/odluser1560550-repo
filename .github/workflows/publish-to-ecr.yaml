@@ -111,4 +111,4 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
         run: |
           IMAGE_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY:$COMMIT_SHA
-          ./wizcli docker tag -i $IMAGE_URI
+          sudo -E ./wizcli docker tag -i $IMAGE_URI
