@@ -51,7 +51,7 @@ jobs:
       - name: Run Wiz CLI image scan
         id: scan
         # run: sudo -E ./wizcli docker scan -i $REGISTRY/$REPOSITORY:${COMMIT_SHA} --policy ${ODLUSER}-vuln-block
-        run: sudo -E ./wizcli docker scan -i $REGISTRY/$REPOSITORY:${COMMIT_SHA} --policy ${ODLUSER}-vuln-block
+        run: ./wizcli docker scan -i $REGISTRY/$REPOSITORY:${COMMIT_SHA} --policy ${ODLUSER}-vuln-block
         continue-on-error: false
         env:
           REGISTRY: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com
@@ -111,4 +111,4 @@ jobs:
           COMMIT_SHA: ${{ github.sha }}
         run: |
           IMAGE_URI=$ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/$REPOSITORY:$COMMIT_SHA
-          sudo -E ./wizcli docker tag -i $IMAGE_URI
+          ./wizcli docker tag -i $IMAGE_URI
